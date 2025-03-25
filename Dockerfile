@@ -39,5 +39,7 @@ RUN service apache2 restart
 # Expose port 80
 EXPOSE 80
 
+RUN php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear && php artisan optimize
+
 # Start Apache
 CMD ["apache2-foreground"]
