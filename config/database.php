@@ -49,9 +49,8 @@ return [
             'database' => env('DB_DATABASE', 'if0_38577163_whatsapp_db'),
             'username' => env('DB_USERNAME', 'if0_38577163'),
             'password' => env('DB_PASSWORD', 'aL29fvrpF8AM'),
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => env('DB_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'strict' => true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([

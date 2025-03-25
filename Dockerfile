@@ -39,7 +39,7 @@ RUN composer install --no-dev --optimize-autoloader
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf
 
 # Ensure Laravel environment is set correctly
-RUN php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear && php artisan optimize
+RUN export $(cat .env | xargs) && php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear && php artisan config:cache
 
 # Restart Apache to apply changes
 RUN service apache2 restart
