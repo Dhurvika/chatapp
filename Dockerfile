@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     libonig-dev \
     libxml2-dev \
+    wget \
     && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
 
 # Enable Apache mod_rewrite
@@ -22,24 +23,29 @@ WORKDIR /var/www/html
 # Copy Laravel project files
 COPY . .
 
-# Set correct permissions for storage & bootstrap/cache
+# Set correct permissions for Laravel
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html
 
-# Install Composer dependencies
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Install Composer manually to avoid zlib stream errors
+RUN wget -O composer-setup.php https://getcomposer.org/installer
+RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+RUN rm composer-setup.php  # Remove installer after setup
+
+# Install Laravel dependencies
 RUN composer install --no-dev --optimize-autoloader
 
 # Set the correct document root for Laravel
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf
+
+# Ensure Laravel environment is set correctly
+RUN php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear && php artisan optimize
 
 # Restart Apache to apply changes
 RUN service apache2 restart
 
 # Expose port 80
 EXPOSE 80
-
-RUN php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear && php artisan optimize
 
 # Start Apache
 CMD ["apache2-foreground"]
