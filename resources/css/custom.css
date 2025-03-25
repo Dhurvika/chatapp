@@ -1,0 +1,136 @@
+/* ✅ General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+   
+}
+
+/* Parent wrapper to center the chat container */
+#outer-wrapper {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    margin-top: 20px;         /* Optional top spacing */
+}
+
+/* Chat container specifics */
+#chat-container {
+    width: 70%;         /* Or any %/px you prefer */
+    height: 500px;      /* Fixed height */
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    display: flex;      /* Keep user list & chat side by side */
+}
+
+
+/* ✅ User List (Left Side) */
+#user-list {
+    width: 30%;
+    background: #f4f4f4;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* ✅ Chat Window (Right Side) */
+#chat-window {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+/* ✅ Message Container (Scrollable) */
+/* #message-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    height: 400px; /* Fixed height */
+    /* scroll-behavior: smooth;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+} */ 
+
+
+
+#message-container {
+    height: 400px; 
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+
+
+
+
+/* ✅ Sent Messages (Right Side) */
+.sent-message {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+}
+
+.sent-message .message-bubble {
+    background-color: #dcf8c6; /* Light green */
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 10px 10px 0px 10px;
+    max-width: 60%;
+    font-weight: 500;
+    word-wrap: break-word;
+    white-space: normal;
+    display: inline-block;
+    position: relative;
+}
+
+/* ✅ Received Messages (Left Side) */
+.received-message {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 8px;
+}
+
+.received-message .message-bubble {
+    background-color: #ffffff;
+    color: #000;
+    padding: 10px 15px;
+    border-radius: 10px 10px 10px 0px;
+    max-width: 60%;
+    font-weight: 500;
+    word-wrap: break-word;
+    white-space: normal;
+    display: inline-block;
+    position: relative;
+}
+
+/* ✅ Message Time (Proper Placement Below Message) */
+.message-time {
+    font-size: 12px;
+    color: #555;
+    display: block;
+    text-align: right;
+    margin-top: 4px;
+}
+
+
+/* ✅ Input & Send Button */
+#message-input {
+    width: calc(100% - 70px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#send-message {
+    padding: 10px 15px;
+    background-color: #25D366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
