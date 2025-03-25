@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: chatapp
+    env: docker
+    plan: free
+    repo:  https://github.com/Dhurvika/chatapp.git
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
