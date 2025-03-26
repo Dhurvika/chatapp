@@ -45,9 +45,10 @@ EXPOSE 80
 
 # Ensure Laravel environment is set correctly
 RUN php artisan config:clear && \
-    php artisan cache:clear && \
+    php artisan cache:clear || true && \
     php artisan route:clear && \
     php artisan view:clear && \
+    php artisan migrate --force && \
     php artisan config:cache
 
 # Start Apache
