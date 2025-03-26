@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,10 +78,10 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-        
+
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DB_URL'),
+            'url' => env('DB_URDATABASE_URLL'),
             'host' => env('DB_HOST', 'dpg-cvhpdq9c1ekc738e07l0-a'), // Change default host
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'whatsapp_chat'),  // Match your .env
