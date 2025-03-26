@@ -35,7 +35,7 @@ RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-dev --optimize-autoloader
 
 # Copy .env file to ensure Laravel uses the correct database configuration
-COPY .env /var/www/html/.env
+
 
 # Set the correct document root for Laravel
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf
