@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,22 +41,22 @@ return [
         //     'journal_mode' => null,
         //     'synchronous' => null,
         // ],
-        'mysql' => [
-            'driver' => 'mysql',
-            'url' => env('DB_URL', ''),
-            'host' => env('DB_HOST', 'sql300.infinityfree.com'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'if0_38577163_whatsapp_db'),
-            'username' => env('DB_USERNAME', 'if0_38577163'),
-            'password' => env('DB_PASSWORD', 'aL29fvrpF8AM'),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'strict' => true,
-            'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
-        ],
+        // 'mysql' => [
+        //     'driver' => 'mysql',
+        //     'url' => env('DB_URL', ''),
+        //     'host' => env('DB_HOST', 'sql300.infinityfree.com'),
+        //     'port' => env('DB_PORT', '3306'),
+        //     'database' => env('DB_DATABASE', 'if0_38577163_whatsapp_db'),
+        //     'username' => env('DB_USERNAME', 'if0_38577163'),
+        //     'password' => env('DB_PASSWORD', 'aL29fvrpF8AM'),
+        //     'charset' => 'utf8mb4',
+        //     'collation' => 'utf8mb4_unicode_ci',
+        //     'strict' => true,
+        //     'engine' => null,
+        //     'options' => extension_loaded('pdo_mysql') ? array_filter([
+        //         PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+        //     ]) : [],
+        // ],
 
 
         'mariadb' => [
@@ -78,20 +78,20 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
+        
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DB_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'dpg-cvhpdq9c1ekc738e07l0-a'), // Change default host
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'laravel'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
-            'charset' => env('DB_CHARSET', 'utf8'),
+            'database' => env('DB_DATABASE', 'whatsapp_chat'),  // Match your .env
+            'username' => env('DB_USERNAME', 'whatsapp_chat_user'), // Match your .env
+            'password' => env('DB_PASSWORD', 'ztZhYjHjW4zIU16q96Uy3VGRDnSG9PWw'), // Match your .env
+            'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
             'search_path' => 'public',
-            'sslmode' => 'prefer',
+            'sslmode' => 'require', // Change from "prefer" to "require"
         ],
 
         'sqlsrv' => [
